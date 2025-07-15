@@ -23,7 +23,7 @@ const PopupContent = () => {
           type="button"
           className="justify-between">
           <span className="text-sm font-bold uppercase text-black-main">
-            View campaings
+            View campaigns
           </span>
           <IconArrow color="black" className="rotate-90" />
         </ButtonLinear>
