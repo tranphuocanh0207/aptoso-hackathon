@@ -1,55 +1,56 @@
-import XIcon from "data-base64:~assets/icons/x_black.svg"
-import LoginVideo from "data-base64:~assets/login.mp4"
-import React, { useEffect } from "react"
-import { useBoolean } from "react-use"
+import XIcon from 'data-base64:~assets/icons/x_black.svg';
+import LoginVideo from 'data-base64:~assets/login.mp4';
+import React, { useEffect } from 'react';
+import { useBoolean } from 'react-use';
 
-import ButtonLinear from "~content-components/components/Buttons/ButtonLinear"
-import IconLoading from "~content-components/components/Icons/IconLoading"
-import { useCustomStorage } from "~content-components/providers/CustomStorageProvider"
-import router from "~content-components/routes"
-import { ERoute } from "~content-components/routes/routes"
-import { userQuery } from "~query/user"
-import { getFullPathname } from "~utils/lib"
+import ButtonLinear from '~content-components/components/Buttons/ButtonLinear';
+import IconLoading from '~content-components/components/Icons/IconLoading';
+import { useCustomStorage } from '~content-components/providers/CustomStorageProvider';
+import router from '~content-components/routes';
+import { ERoute } from '~content-components/routes/routes';
+import { userQuery } from '~query/user';
+import { getFullPathname } from '~utils/lib';
 
 const SignInPage = () => {
-  const [loading, setLoading] = useBoolean(false)
-  const { getUserProfile } = userQuery()
-  const { setOpenSidebar, setAccessToken, setRefreshToken } = useCustomStorage()
+  const [loading, setLoading] = useBoolean(false);
+  const { getUserProfile } = userQuery();
+  const { setOpenSidebar, setAccessToken, setRefreshToken } =
+    useCustomStorage();
 
   const handleLogin = () => {
     if (!loading) {
-      setOpenSidebar(true)
-      setLoading(true)
+      setOpenSidebar(true);
+      setLoading(true);
       window.open(
         `${process.env.PLASMO_PUBLIC_API_URL}/oauth/twitter?env=extension`,
-        "_self"
-      )
+        '_self'
+      );
     }
-  }
+  };
 
   useEffect(() => {
-    const search = window.location.search
+    const search = window.location.search;
     if (search) {
-      const params = new URLSearchParams(search)
-      const accessToken = params.get("accessToken")
-      const refreshToken = params.get("refreshToken")
+      const params = new URLSearchParams(search);
+      const accessToken = params.get('accessToken');
+      const refreshToken = params.get('refreshToken');
 
       if (accessToken) {
-        setAccessToken(accessToken)
-        setRefreshToken(refreshToken)
-        getUserProfile.mutate(accessToken)
+        setAccessToken(accessToken);
+        setRefreshToken(refreshToken);
+        getUserProfile.mutate(accessToken);
 
-        const newUrl = window.location.origin + window.location.pathname
-        window.history.replaceState(null, "", newUrl)
+        const newUrl = window.location.origin + window.location.pathname;
+        window.history.replaceState(null, '', newUrl);
 
-        router.navigate(getFullPathname(ERoute.SecurePassword))
+        router.navigate(getFullPathname(ERoute.SecurePassword));
       }
     }
 
-    if (window.location.href.includes("twitter.com/i/oauth2")) {
-      setLoading(true)
+    if (window.location.href.includes('twitter.com/i/oauth2')) {
+      setLoading(true);
     }
-  }, [])
+  }, []);
 
   return (
     <>
@@ -84,7 +85,7 @@ const SignInPage = () => {
           </ButtonLinear>
           <button className="rounded-2xl w-full h-[50px] flex justify-between items-center p-4 overflow-hidden">
             <span className="text-sm font-bold uppercase text-white">
-              View campaings
+              View campaigns
             </span>
             <IconArrow color="white" />
           </button>
@@ -96,12 +97,12 @@ const SignInPage = () => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default SignInPage
+export default SignInPage;
 
-const IconArrow = ({ color = "black" }) => {
+const IconArrow = ({ color = 'black' }) => {
   return (
     <svg
       width="24"
@@ -114,8 +115,8 @@ const IconArrow = ({ color = "black" }) => {
         fill={color}
       />
     </svg>
-  )
-}
+  );
+};
 
 export const Logo = (
   <svg
@@ -129,4 +130,4 @@ export const Logo = (
       fill="white"
     />
   </svg>
-)
+);
