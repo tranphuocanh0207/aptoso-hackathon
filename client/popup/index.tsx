@@ -1,4 +1,6 @@
-import "~popup/global.css"
+import '~popup/global.css';
+import { CustomStorageProvider } from '~content-components/providers/CustomStorageProvider';
+import PopupContent from '~popup-components';
 
 // import 'https://www.googletagmanager.com/gtag/js?id=$PLASMO_PUBLIC_GTAG_ID'
 // import { useEffect } from 'react'
@@ -16,7 +18,11 @@ const PopupX = () => {
   //   })
   // }, [])
 
-  return <div className="w-[300px] h-[300px] bg-red-500">1231</div>
-}
+  return (
+    <CustomStorageProvider>
+      <PopupContent />
+    </CustomStorageProvider>
+  );
+};
 
-export default PopupX
+export default PopupX;
