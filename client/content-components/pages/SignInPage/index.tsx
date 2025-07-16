@@ -14,8 +14,13 @@ import { getFullPathname } from '~utils/lib';
 const SignInPage = () => {
   const [loading, setLoading] = useBoolean(false);
   const { getUserProfile } = userQuery();
-  const { setOpenSidebar, setAccessToken, setRefreshToken } =
-    useCustomStorage();
+  const {
+    setOpenSidebar,
+    setAccessToken,
+    setRefreshToken,
+    isSigininFromPopup,
+    setIsSigninFromPopup,
+  } = useCustomStorage();
 
   const handleLogin = () => {
     if (!loading) {
@@ -25,8 +30,15 @@ const SignInPage = () => {
         `${process.env.PLASMO_PUBLIC_API_URL}/oauth/twitter?env=extension`,
         '_self'
       );
+      setIsSigninFromPopup(false);
     }
   };
+
+  useEffect(() => {
+    if (isSigininFromPopup) {
+      handleLogin();
+    }
+  }, [isSigininFromPopup]);
 
   useEffect(() => {
     const search = window.location.search;
