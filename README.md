@@ -107,9 +107,11 @@ npm run build
 
 ---
 
-# 📱 Further Information and Contact
+# 📱 Further Information
 
-- Twitter: [Twitter Account](https://twitter.com/)
-- Slide: [Slide](https://docs.google.com/presentation/d/1ZtVYcwAhre5btY-ZZONyl-KejimhfQ8GcHkp7JVMZSI/edit?usp=sharing)
+- Pitdeck: [Pitdeck](https://docs.google.com/presentation/d/1k36EuUarTiyOP43AToQgcxxvHpUF75ZU/edit?slide=id.p5#slide=id.p5)
 - Landing page: [Landing page](https://aptos-social-landing.vercel.app/)
 - Figma design: [Figma design](https://www.figma.com/design/GnB3OSTqJZw3xJR2YyDcPi/AptosSocialFi_Design?node-id=10-2&t=hXXY07nbiXFPksPk-1)
+- Video Demo: [Video Demo](https://www.youtube.com/watch?v=_T6mvABxXCM&t=6s)
+- Install Extension: [Install Extension](https://www.youtube.com/watch?v=OFD8vjzVTG4)
+- Extension Package: [Link](https://drive.google.com/drive/u/0/folders/1tc5aslu5XtntL6Yl7bkJ1tI24-D5UaxP)
